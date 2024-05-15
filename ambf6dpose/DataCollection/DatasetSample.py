@@ -4,11 +4,11 @@ import numpy as np
 from enum import Enum, auto 
 
 class RigidObjectsIds(Enum):
-    needle_pose = 0 
+    # needle_pose = 0 
     psm1_toolpitchlink_pose = 1
     psm1_toolyawlink_pose = 2
-    psm2_toolpitchlink_pose = 3
-    psm2_toolyawlink_pose = 4
+    # psm2_toolpitchlink_pose = 3
+    # psm2_toolyawlink_pose = 4
 
 @dataclass
 class DatasetSample:
@@ -20,11 +20,11 @@ class DatasetSample:
     raw_img: np.ndarray
     segmented_img: np.ndarray
     depth_img: np.ndarray
-    needle_pose: np.ndarray
+    # needle_pose: np.ndarray
     psm1_toolpitchlink_pose: np.ndarray
-    psm2_toolpitchlink_pose: np.ndarray
+    # psm2_toolpitchlink_pose: np.ndarray
     psm1_toolyawlink_pose: np.ndarray
-    psm2_toolyawlink_pose: np.ndarray
+    # psm2_toolyawlink_pose: np.ndarray
     intrinsic_matrix: np.ndarray
     gt_vis_img: np.ndarray = field(default=None, init=False)
 
@@ -55,29 +55,29 @@ class DatasetSample:
         img = self.raw_img.copy()
 
         # Project needle points on image
-        img_pt = self.project_needle_points()
-        for i in range(img_pt.shape[0]):
-            img = cv2.circle(
-                img, (int(img_pt[i, 0, 0]), int(img_pt[i, 0, 1])), 3, (255, 0, 0), -1
-            )
+        # img_pt = self.project_needle_points()
+        # for i in range(img_pt.shape[0]):
+        #     img = cv2.circle(
+        #         img, (int(img_pt[i, 0, 0]), int(img_pt[i, 0, 1])), 3, (255, 0, 0), -1
+        #     )
 
         # Draw axis on tool yaw links
         img = self.draw_axis(
             img,
             self.psm1_toolpitchlink_pose,
         )
-        img = self.draw_axis(
-            img,
-            self.psm2_toolpitchlink_pose,
-        )
+        # img = self.draw_axis(
+        #     img,
+        #     self.psm2_toolpitchlink_pose,
+        # )
         img = self.draw_axis(
             img,
             self.psm1_toolyawlink_pose,
         )
-        img = self.draw_axis(
-            img,
-            self.psm2_toolyawlink_pose,
-        )
+        # img = self.draw_axis(
+        #     img,
+        #     self.psm2_toolyawlink_pose,
+        # )
 
         self.gt_vis_img = img
 

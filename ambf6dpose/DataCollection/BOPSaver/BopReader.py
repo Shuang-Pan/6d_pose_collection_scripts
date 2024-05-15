@@ -104,7 +104,9 @@ class BopDatasetReader(AbstractReader):
         folder_names = get_folder_names()
         self.__dict_paths = defaultdict(dict)
         if len(self.scene_id_list) == 0:
-            self.scene_id_list = [p.name for p in natsorted(self.root.glob("*")) if p.is_dir()]
+            self.scene_id_list = [
+                p.name for p in natsorted(self.root.glob("*")) if p.is_dir()
+            ]
         else:
             self.scene_id_list = [self.format_step(x) for x in self.scene_id_list]
 
@@ -176,21 +178,21 @@ class BopDatasetReader(AbstractReader):
             raw_img=cv2.imread(raw_path),
             segmented_img=cv2.imread(seg_path),
             depth_img=self.load_depth(depth_path),
-            needle_pose=self.get_extrinsic_matrix(
-                RigidObjectsIds.needle_pose.value, scene_id, img_name
-            ),
+            # needle_pose=self.get_extrinsic_matrix(
+            #     RigidObjectsIds.needle_pose.value, scene_id, img_name
+            # ),
             psm1_toolpitchlink_pose=self.get_extrinsic_matrix(
                 RigidObjectsIds.psm1_toolpitchlink_pose.value, scene_id, img_name
             ),
-            psm2_toolpitchlink_pose=self.get_extrinsic_matrix(
-                RigidObjectsIds.psm2_toolpitchlink_pose.value, scene_id, img_name
-            ),
+            # psm2_toolpitchlink_pose=self.get_extrinsic_matrix(
+            #     RigidObjectsIds.psm2_toolpitchlink_pose.value, scene_id, img_name
+            # ),
             psm1_toolyawlink_pose=self.get_extrinsic_matrix(
                 RigidObjectsIds.psm1_toolyawlink_pose.value, scene_id, img_name
             ),
-            psm2_toolyawlink_pose=self.get_extrinsic_matrix(
-                RigidObjectsIds.psm2_toolyawlink_pose.value, scene_id, img_name
-            ),
+            # psm2_toolyawlink_pose=self.get_extrinsic_matrix(
+            #     RigidObjectsIds.psm2_toolyawlink_pose.value, scene_id, img_name
+            # ),
             intrinsic_matrix=self.get_camera_intrinsics(scene_id, img_name),
         )
         return sample
@@ -247,9 +249,12 @@ class BopDatasetReader(AbstractReader):
 
 
 if __name__ == "__main__":
-    file_path = Path(__file__).resolve().parent
-    root_path2 = file_path / "../../../SampleData/BOP/needle_gripper_dataset_V0.0.2"
-    root_path2 = root_path2.resolve()
+    # file_path = Path(__file__).resolve().parent
+    # root_path2 = file_path / "../../../SampleData/BOP/needle_gripper_dataset_V0.0.2"
+    # root_path2 = root_path2.resolve()
+    root_path2 = Path(
+        "/home/juan1995/research/accelnet_grant/src_asset_creation/SurgicalChallenge3DAssets/3d_med_phantom/zijian_nerf_scene/scripts/output/dataset1/"
+    )
 
     reader = BopDatasetReader(
         root=Path(root_path2),

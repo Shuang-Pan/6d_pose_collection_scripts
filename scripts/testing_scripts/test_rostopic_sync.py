@@ -9,14 +9,14 @@ import click
 selected_topics = [
     RosTopics.CAMERA_L_IMAGE,
     RosTopics.CAMERA_FRAME,
-    RosTopics.NEEDLE,
+    # RosTopics.NEEDLE,
     RosTopics.CAMERA_L_IMAGE,
     RosTopics.CAMERA_L_SEG_IMAGE,
     RosTopics.CAMERA_L_DEPTH,
     RosTopics.PSM1_TOOL_PITCH_LINK,
-    RosTopics.PSM2_TOOL_PITCH_LINK,
+    # RosTopics.PSM2_TOOL_PITCH_LINK,
     RosTopics.PSM1_TOOL_YAW_LINK,
-    RosTopics.PSM2_TOOL_YAW_LINK,
+    # RosTopics.PSM2_TOOL_YAW_LINK,
 ]
 
 

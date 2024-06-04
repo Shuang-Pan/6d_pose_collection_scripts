@@ -24,7 +24,7 @@ class RosTopics(Enum):
     CAMERA_FRAME = ("/ambf/env/CameraFrame/State", RigidBodyState)
     NEEDLE = ("/ambf/env/Needle/State", RigidBodyState)
     CAMERA_L_IMAGE = ("/ambf/env/cameras/cameraL/ImageData", Image)
-    CAMERA_L_SEG_IMAGE = ("/ambf/env/cameras/cameraL2/ImageData", Image)
+    CAMERA_L_SEG_IMAGE = ("/ambf/env/cameras/cameraR/ImageData", Image)
     # CAMERA_L_DEPTH = ("/ambf/env/cameras/cameraL/DepthData", PointCloud2)
     PSM1_TOOL_PITCH_LINK = ("/ambf/env/psm1/toolpitchlink/State", RigidBodyState)
     PSM2_TOOL_PITCH_LINK = ("/ambf/env/psm2/toolpitchlink/State", RigidBodyState)
